@@ -7,11 +7,27 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Welcome to Club Amalia 04:17</h1>
-    <p>Enter the Whisper Room</p>
-    <a href="whisper_room.html">Whisper Room</a>
-</div>
-<script src="script.js"></script>
+    <div class="container">
+        <h1>Welcome to Club Amalia 04:17</h1>
+        <div id="chat">
+            <div id="messages"></div>
+            <input type="text" id="input" placeholder="Whisper your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById("input");
+            const messages = document.getElementById("messages");
+            if (input.value.trim() !== "") {
+                const message = document.createElement("div");
+                message.textContent = input.value;
+                messages.appendChild(message);
+                input.value = "";
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+    </script>
 </body>
 </html>
