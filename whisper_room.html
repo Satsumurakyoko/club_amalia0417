@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whisper Room</title>
-  <link href="style.css" rel="stylesheet">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper Room</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div class="whisper-room">
-  <div class="whispers">
-    <div class="whisper" id="whisper-1">The whispers are awake</div>
-    <div class="whisper" id="whisper-2">Can you hear them?</div>
-    <div class="whisper" id="whisper-3">Follow the echoes...</div>
-  </div>
-  <div class="input-zone">
-    <input type="text" id="whisperInput" placeholder="Whisper back...">
-    <button onclick="sendWhisper()">Send</button>
-  </div>
-</div>
+    <h1>The whispers are awake</h1>
+    <p>Can you hear them?</p>
+    <p>Follow the echoes...</p>
+    <form id="whisperForm">
+        <input type="text" id="whisperInput" placeholder="шёпот" required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="whispers"></div>
+
+    <script>
+        document.getElementById("whisperForm").onsubmit = function(event) {
+            event.preventDefault();
+            const input = document.getElementById("whisperInput");
+            const whisper = input.value;
+            if (whisper.trim() !== "") {
+                const echo = document.createElement("p");
+                echo.textContent = whisper;
+                document.getElementById("whispers").appendChild(echo);
+                input.value = "";
+            }
+        };
+    </script>
 </body>
 </html>
