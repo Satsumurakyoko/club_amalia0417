@@ -23,7 +23,12 @@
             const whisper = input.value;
             if (whisper.trim() !== "") {
                 const echo = document.createElement("p");
-                echo.textContent = whisper;
+                if (whisper.toLowerCase() === "dezeртир был здесь") {
+                    echo.textContent = "Света нет. Только шёпот.";
+                    echo.style.color = "#FF6600"; // Hermès Orange
+                } else {
+                    echo.textContent = whisper;
+                }
                 document.getElementById("whispers").appendChild(echo);
                 input.value = "";
             }
